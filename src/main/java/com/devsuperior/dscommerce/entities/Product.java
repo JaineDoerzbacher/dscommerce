@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
+
 @Entity
 @Table(name = "tb_product")
 public class Product {
@@ -84,7 +86,7 @@ public class Product {
     }
 
     public List<Order> getOrders(){
-        return items.stream().map(x-> x.getOrder()).toList(); //pega o items (que é uma lista de OrderItem) e para cada obj x do tipo orderItem pego e chamo o getOrder
+        return items.stream().map(OrderItem::getOrder).collect(Collectors.toList()); //pega o items (que é uma lista de OrderItem) e para cada obj x do tipo orderItem pego e chamo o getOrder
     }
 
 }

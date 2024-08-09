@@ -6,6 +6,7 @@ import java.time.Instant;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "tb_order")
@@ -82,7 +83,7 @@ public class Order {
     }
 
     public List<Product> getProducts(){
-        return items.stream().map(x-> x.getProduct()).toList();
+        return items.stream().map(x-> x.getProduct()).collect(Collectors.toList());
     }
 
 }
